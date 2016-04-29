@@ -19,71 +19,59 @@ function e($dirty) {
 
         <link rel="shortcut icon" href="static/img/favicon.ico">
 
-        <?php if (USE_DARK_THEME): ?>
-            <link rel="stylesheet" href="static/css/bootstrap_dark.min.css">
-            <link rel="stylesheet" href="static/css/dark/prettify-dark.css">
-            <link rel="stylesheet" href="static/css/codemirror.css">
-            <link rel="stylesheet" href="static/css/main_dark.css">
-            <link rel="stylesheet" href="static/css/dark/codemirror-tomorrow-night-bright.css">
-        <?php else: ?>
-            <link rel="stylesheet" href="static/css/bootstrap.min.css">
-            <link rel="stylesheet" href="static/css/prettify.css">
-            <link rel="stylesheet" href="static/css/codemirror.css">
-            <link rel="stylesheet" href="static/css/main.css">
-        <?php endif; ?>
-		<link rel="stylesheet" href="static/css/custom.css">
+        <!--<link rel="stylesheet" href="static/css/bootstrap.min.css">-->
+        <!--<link rel="stylesheet" href="static/css/prettify.css">-->
+        <link rel="stylesheet" href="static/css/highlightjs-github.css">
+        <link rel="stylesheet" href="static/css/codemirror.css">
+        <link rel="stylesheet" href="static/css/codemirror-neo.css">
+        <link rel="stylesheet" href="static/css/main.css">
+        <link rel="stylesheet" href="static/css/custom.css">
 
         <meta name="description" content="<?php echo e($page['description']) ?>">
         <meta name="keywords" content="<?php echo e(join(',', $page['tags'])) ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
         <?php if(!empty($page['author'])): ?>
             <meta name="author" content="<?php echo e($page['author']) ?>">
         <?php endif; ?>
 
         <script src="static/js/jquery.min.js"></script>
-        <script src="static/js/prettify.js"></script>
+        <!--<script src="static/js/prettify.js"></script>-->
+        <script src="static/js/highlight.js"></script>
         <script src="static/js/codemirror.min.js"></script>
+        <script src="static/js/scripts.js"></script>
     </head>
 <body>
-    <div id="main">
-        <?php if(USE_WIKITTEN_LOGO === true): ?>
-            <a href="http://wikitten.vizuina.com" id="logo" target="_blank" class="hidden-phone">
-                <img src="static/img/logo.png" alt="">
-                <div class="bubble">Remember to check for updates!</div>
-            </a>
-        <?php endif; ?>
-        <div class="inner">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-md-3">
-                        <div id="sidebar">
-                            <div class="inner">
-                                <h2><span><?php echo e(APP_NAME) ?></span></h2>
-                                <?php include('tree.php') ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-9">
-                        <div id="content">
-                            <div class="inner">
-                                <?php echo $content; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        <?php if(USE_WIKITTEN_LOGO === true): ?>
-            $(document).ready(function () {
-                $('#logo').delay(2000).animate({
-                    left: '20px'
-                }, 600);
-            });
-        <?php endif; ?>
-    </script>
+
+  <button type="button" id="toggle-menu" class="toggle-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <aside class="main-nav" id="main-nav">
+    <!--<h1><a href="{{ base_url }}">{{ site_title }}</a></h1>-->
+
+    <nav>
+      <!--<h2><span><?php echo e(APP_NAME) ?></span></h2>-->
+      <?php include('tree.php') ?>
+      <!--
+      <ul>
+        <li {% if page == current_page %}class="active" id="current-page"{% endif %}>
+          <a href="{{ page.url }}">{{ page.title }}</a>
+          <ul class="page-nav"></ul>
+        </li>
+      </ul>
+      -->
+    </nav>
+  </aside>
+
+  <div class="main-content" id="main-content">
+    <?php echo $content; ?>
+  </div>
+
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

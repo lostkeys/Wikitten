@@ -1,4 +1,11 @@
-<div class="breadcrumbs">    
+<div class="actions">
+<?php if ($html && isset($source)): ?>
+    <a href="javascript:;" class="btn-black" id="toggle">Toggle source</a>
+<?php endif ?>
+</div>
+<!-- Disable breadcrumb for now -->
+<!--
+<div class="breadcrumbs">
     <div class="pull-right">
         <?php if ($html && isset($source)): ?>
             <a href="javascript:;" class="btn-black" id="toggle">Toggle source</a>
@@ -6,9 +13,10 @@
         <?php if ($use_pastebin): ?>
             <a href="javascript:;" class="btn-black" id="create-pastebin" title="Create public Paste on PasteBin">Create public Paste</a>
         <?php endif; ?>
-    </div>    
+    </div>
 
     <?php $path = array(); ?>
+
     <ul class="breadcrumb">
         <li>
             <a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home glyphicon-white"></i> /wiki</a>
@@ -30,7 +38,9 @@
             </li>
         <?php endforeach ?>
     </ul>
+
 </div>
+-->
 
 <?php if ($html): ?>
     <?php if ($use_pastebin): ?>
@@ -40,8 +50,8 @@
         <?php echo $html; ?>
     </div>
     <script>
-        $('#render pre').addClass('prettyprint linenums');
-        prettyPrint();
+        //$('#render pre').addClass('prettyprint linenums');
+        //prettyPrint();
 
         $('#render a[href^="#"]').click(function(event) {
             event.preventDefault();
@@ -56,9 +66,12 @@
     <?php endif; ?>
     <div id="source">
         <?php if (ENABLE_EDITING): ?>
+            <!-- This theme expects edit mode-->
+            <!--
             <div class="alert alert-info">
                 <i class="glyphicon glyphicon-pencil"></i> <strong>Editing is enabled</strong>. Use the "Save changes" button below the editor to commit modifications to this file.
             </div>
+            -->
         <?php endif ?>
 
         <form method="POST" action="<?php echo BASE_URL . "/?a=edit" ?>">
@@ -66,8 +79,8 @@
             <textarea id="editor" name="source" class="form-control" rows="<?php echo substr_count($source, "\n") + 1; ?>"><?php echo $source; ?></textarea>
 
             <?php if (ENABLE_EDITING): ?>
-                <div class="form-actions">
-                    <input type="submit" class="btn btn-warning btn-sm" id="submit-edits" value="Save Changes">
+                <div class="actions">
+                    <input type="submit" class="btn-black" value="Save">
                 </div>
             <?php endif ?>
         </form>
@@ -107,12 +120,12 @@
         }
 
         var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-            lineNumbers: true,
+            lineNumbers: false,
             lineWrapping: true,
             <?php if (USE_DARK_THEME): ?>
             theme: 'tomorrow-night-bright',
             <?php else: ?>
-            theme: 'default',
+            theme: 'neo',
             <?php endif; ?>
             mode: mode
             <?php if(!ENABLE_EDITING): ?>
@@ -144,7 +157,7 @@
                 url: '<?php echo BASE_URL . '/?a=createPasteBin'; ?>',
                 data: { ref: '<?php echo base64_encode($page['file']); ?>' },
                 context: $(this)
-            }).done(function(response) {                
+            }).done(function(response) {
                 $(this).removeClass('disabled');
 
                 if (response.status === 'ok') {

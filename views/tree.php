@@ -18,7 +18,7 @@ function tree($array, $parent, $parts = array(), $step = 0) {
             $t .=  '</li>';
         } else {
             $selected = (isset($parts[$step]) && $item == $parts[$step]);
-            $t .= '<li class="file'. ($selected ? ' active' : '') .'"><a href="'. $parent .'/'. $item . '">'.$item.'</a></li>';
+            $t .= '<li class="file'. ($selected ? ' active' : '') .'" id="'. ($selected ? 'current-page' : '') .'"><a href="'. $parent .'/'. $item . '">'.$item.'</a><ul class="page-nav"></ul></li>';
         }
     }
 
@@ -29,7 +29,7 @@ function tree($array, $parent, $parts = array(), $step = 0) {
 ?>
 
 <div id="tree-filter" class="input-group">
-    <input type="text" id="tree-filter-query" placeholder="Search file &amp; directory names." class="form-control input-sm">
+    <!--<input type="text" id="tree-filter-query" placeholder="Search file &amp; directory names." class="form-control input-sm">-->
     <a id="tree-filter-clear-query" title="Clear current search..." class="input-group-addon input-sm">
         <i class="glyphicon glyphicon-remove"></i>
     </a>
