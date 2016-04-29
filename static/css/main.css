@@ -319,17 +319,17 @@ table th {
 }
 
 code {
-  padding: 5px 10px;
+  display: inline-block;
+  padding: 0 3px;
   border: 1px solid #e1e7e8;
   border-radius: 3px;
   background-color: #f8f8f8;
   color: #4d5757;
   /* text */
 }
-
-p code {
-  display: inline-block;
-  padding: 0 3px;
+pre code {
+  display: block;
+  padding: 5px 10px;
 }
 
 .actions {
