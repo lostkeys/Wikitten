@@ -2,7 +2,19 @@
 Text:   #4d5757
 Smoke:  #ecf0f1
 Cloud:  #f8f8f8
+??? borders on code: e1e7e8
 */
+
+:root {
+  --color-asphalt:#4d5757;
+  --color-concrete: #96A5A5;
+  --color-smoke: #e1e7e8;
+  --color-cloud: #f8f8f8;
+  --color-amethyst: #9b59b6;
+
+  --text-base: var(--color-asphalt);
+  --link-active: var(--color-amethyst);
+}
 
 /* Font Face */
 @font-face {
@@ -85,7 +97,7 @@ a:hover {
 
 a:active,
 a:focus {
-  color: #9b59b6/* amethyst */
+  color: var(--link-active);
 }
 
 h1 {
@@ -340,6 +352,37 @@ pre code {
   padding: 10px;
 }
 
+.breadcrumbs {
+  position: absolute;
+  top: 0;
+  padding: 10px 0;
+}
+.breadcrumb {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .9rem;
+}
+.breadcrumb li {
+  display: inline-block;
+}
+.breadcrumb a {
+  color: var(--color-smoke);
+  transition: color .5s;
+}
+.breadcrumb:hover a {
+  color: var(--text-base);
+}
+.breadcrumb a:focus,
+.breadcrumb a:active {
+  color: var(--link-active);
+}
+.directory-path {
+    color: #7B848C;
+    font-weight: normal;
+}
+
+
 
 /* --------------------------------*/
 /* --Legacy code-------------------*/
@@ -388,7 +431,7 @@ form {
 #sidebar .inner {
 
 }
-#sidebar h2, .breadcrumbs {
+#sidebar h2 {
     line-height: 20px;
     background: #7B848C;
     padding: 0 20px;
@@ -444,30 +487,6 @@ form {
 #sidebar li a, #sidebar li a:hover {
     display: block;
     text-decoration: none;
-}
-.breadcrumb {
-    background: none;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-.breadcrumbs li {
-    color: white;
-}
-.breadcrumbs a {
-    color: white;
-}
-.breadcrumbs a:hover {
-    text-decoration: none;
-    text-shadow: 0 0 3px #656565;
-}
-.breadcrumbs .glyphicon {
-    font-size: 85%;
-    margin-right: 3px;
-}
-.directory-path {
-    color: #7B848C;
-    font-weight: normal;
 }
 
 #logo {

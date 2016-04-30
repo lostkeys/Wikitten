@@ -2,29 +2,22 @@
 <?php if ($html && isset($source)): ?>
     <a href="javascript:;" class="btn-black" id="toggle">Toggle source</a>
 <?php endif ?>
+<?php if ($use_pastebin): ?>
+    <a href="javascript:;" class="btn-black" id="create-pastebin" title="Create public Paste on PasteBin">Create public Paste</a>
+<?php endif; ?>
 </div>
-<!-- Disable breadcrumb for now -->
-<!--
+
 <div class="breadcrumbs">
-    <div class="pull-right">
-        <?php if ($html && isset($source)): ?>
-            <a href="javascript:;" class="btn-black" id="toggle">Toggle source</a>
-        <?php endif ?>
-        <?php if ($use_pastebin): ?>
-            <a href="javascript:;" class="btn-black" id="create-pastebin" title="Create public Paste on PasteBin">Create public Paste</a>
-        <?php endif; ?>
-    </div>
-
     <?php $path = array(); ?>
-
     <ul class="breadcrumb">
         <li>
-            <a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home glyphicon-white"></i> /wiki</a>
+            <a href="<?php echo BASE_URL; ?>">Ref •</a>
         </li>
         <?php $i = 0; ?>
 
         <?php foreach ($parts as $part): ?>
             <?php $path[] = $part; ?>
+            <!-- TODO: I'm not using folders so this is not tested -->
             <?php $url = BASE_URL . "/" . join("/", $path) ?>
             <li>
                 <a href="<?php echo htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
@@ -38,9 +31,8 @@
             </li>
         <?php endforeach ?>
     </ul>
-
 </div>
--->
+
 
 <?php if ($html): ?>
     <?php if ($use_pastebin): ?>
