@@ -178,8 +178,8 @@ table th {
   left: 10px;
   z-index: 1000;
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 24px;
+  height: 24px;
   outline: none;
   border: none;
   border-radius: 50%;
@@ -197,54 +197,57 @@ table th {
 
 .toggle-menu span {
   position: absolute;
-  left: 10px;
+  left: 2px;
   display: block;
-  width: 30px;
+  width: 20px;
   height: 2px;
   border-radius: 1px;
-  background-color: black;
+  background-color: var(--color-smoke);
   opacity: 1;
-  transition: .25s ease-in-out;
+  transition: .20s ease-in-out;
+  transform-origin: center;;
 }
 
 .toggle-menu span:nth-child(1) {
-  top: 15px;
+  top: 0px;
 }
 
 .toggle-menu span:nth-child(2) {
-  top: 24px;
+  top: 6px;
 }
 
 .toggle-menu span:nth-child(3) {
-  top: 24px;
+  top: 6px;
 }
 
 .toggle-menu span:nth-child(4) {
-  top: 33px;
+  top: 12px;
 }
 
 .toggle-menu.open span:nth-child(2) {
-  top: 24px;
-  left: 9px;
-  width: 32px;
+  /*top: 7px;*/
+  left: 0px;
+  width: 24px;
   height: 2px;
   transform: rotate(-45deg);
+  background-color: var(--text-base);
 }
 
 .toggle-menu.open span:nth-child(3) {
-  top: 24px;
-  left: 9px;
-  width: 32px;
+  /*top: 7px;*/
+  left: 0px;
+  width: 24px;
   height: 2px;
   transform: rotate(45deg);
+  background-color: var(--text-base);
 }
 
 .toggle-menu.open span:nth-child(1),
 .toggle-menu.open span:nth-child(4) {
-  top: 23px;
-  left: 24px;
-  width: 2px;
   opacity: 0;
+  top: 6px;
+  left: 9px;
+  width: 2px;
 }
 
 .main-content {
