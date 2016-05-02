@@ -11,9 +11,15 @@ Cloud:  #f8f8f8
   --color-smoke: #e1e7e8;
   --color-cloud: #f8f8f8;
   --color-amethyst: #9b59b6;
+  --color-grass: #27ae60;
 
   --text-base: var(--color-asphalt);
   --link-active: var(--color-amethyst);
+
+  --btn-bg: var(--color-smoke);
+  --btn-text: var(--text-base);
+  --btn-success-bg: var(--color-grass);
+  --btn-success-text: #fff;
 }
 
 /* Font Face */
@@ -139,20 +145,32 @@ table th {
 
 
 /* FIXME */
-.btn-black {
-  margin: 2px 0;
+.btn {
+  display:inline-block;
+  margin: 0;
   padding: 4px 8px;
+  outline: none;
+  border: none;
   border-radius: 3px;
-  background: #ecf0f1;
-  color: #4d5757;
-  font-size: 85%;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: .8rem;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  transition: transform .1s;
 }
-.btn-black:hover {
-  background: #ecf0f1;
-  color: #4d5757;
+.btn:hover {
+  color: var(--btn-text);
+  transform: scale(1.05);
 }
-
-
+.btn-success {
+  background: var(--btn-success-bg);
+  color: var(--btn-success-text);
+}
+.btn-success:hover {
+  /* TODO: there is a inheritance selector, find it. */
+  color: var(--btn-success-text);
+}
 
 .toggle-menu {
   position: fixed;

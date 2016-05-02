@@ -1,6 +1,6 @@
 <div class="actions" id="view-actions">
 <?php if ($html && isset($source)): ?>
-    <a href="javascript:;" class="btn-black toggle">Toggle source</a>
+    <a href="javascript:;" class="btn toggle">Toggle source</a>
 <?php endif ?>
 <?php if ($use_pastebin): ?>
     <a href="javascript:;" class="btn-black" id="create-pastebin" title="Create public Paste on PasteBin">Create public Paste</a>
@@ -72,8 +72,8 @@
 
             <?php if (ENABLE_EDITING): ?>
                 <div class="actions">
-                    <a href="javascript:;" class="btn-black toggle">cancel</a>
-                    <input type="submit" class="btn-black" value="Save">
+                    <a href="javascript:;" class="btn toggle">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Save">
                 </div>
             <?php endif ?>
         </form>
