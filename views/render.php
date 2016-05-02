@@ -1,6 +1,6 @@
-<div class="actions">
+<div class="actions" id="view-actions">
 <?php if ($html && isset($source)): ?>
-    <a href="javascript:;" class="btn-black" id="toggle">Toggle source</a>
+    <a href="javascript:;" class="btn-black toggle">Toggle source</a>
 <?php endif ?>
 <?php if ($use_pastebin): ?>
     <a href="javascript:;" class="btn-black" id="create-pastebin" title="Create public Paste on PasteBin">Create public Paste</a>
@@ -72,6 +72,7 @@
 
             <?php if (ENABLE_EDITING): ?>
                 <div class="actions">
+                    <a href="javascript:;" class="btn-black toggle">cancel</a>
                     <input type="submit" class="btn-black" value="Save">
                 </div>
             <?php endif ?>
@@ -125,9 +126,10 @@
             <?php endif ?>
         });
 
-        $('#toggle').click(function (event) {
+        $('.toggle').click(function (event) {
             event.preventDefault();
             $('#render').toggle();
+            $('#view-actions').toggle();
             $('#source').toggle();
             if ($('#source').is(':visible')) {
                 editor.refresh();
