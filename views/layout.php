@@ -73,5 +73,60 @@ function e($dirty) {
   </div>
 
   <script>hljs.initHighlightingOnLoad();</script>
+
+    <?php if ($use_pinboard): ?>
+    <script>
+    $(document).ready(function(){
+        var render = function(data) {
+            var items = [];
+
+            $.each( data, function( key, val ) {
+                items.push( '<li class="bookmark" id="bookmark-' + key + '">'
+                    + '<h3 class="bookmark-heading">' + val.title + '</h3>'
+                    + '<p class="bookmark-description">' + val.description + '</p>'
+                    + '<div class="bookmark-tags">' + val.tags + '</div>'
+                    + '</li>'
+                );
+            });
+
+            $( "<ul/>", {
+                "class": "bookmarks",
+                html: items.join( "" )
+            }).appendTo( ".pinboard" );
+
+            // Apply filter
+            //testFilter();
+        }
+
+        var saveLocalData = function(data) {
+            localStorage.setItem("wikiPinboardData", JSON.stringify(data));
+        }
+
+        var loadLocalData = function() {
+            return JSON.parse(localStorage.getItem("wikiPinboardData"));
+        }
+
+        if (localStorage.getItem("wikiPinboardData") === null) {
+            $.ajax({
+                type: 'POST',
+                dataType: "json",
+                url: '<?php echo BASE_URL . '/?a=getPinboardBookmarks'; ?>'
+            }).done(function(data) {
+                console.log('Load from pinboard', data);
+                saveLocalData(data);
+                render(data);
+            });
+        }
+        else {
+            render(loadLocalData());
+        }
+
+        function testFilter() {
+            console.log('test');
+            $('.bookmark-tags').filter(':not(:contains("Plugin"))').parent().css('display', 'none');
+        }
+    });
+    </script>
+    <?php endif; ?>
 </body>
 </html>

@@ -28,3 +28,8 @@ define('DEFAULT_FILE', 'index.md');
 // Enable PasteBin plugin ?
 // define('ENABLE_PASTEBIN', true);
 // define('PASTEBIN_API_KEY', '');
+
+// Enable pinboard plugin
+// define('ENABLE_PINBOARD', true);
+// define('PINBOARD_USERNAME', '');
+// define('PINBOARD_API_KEY', '');

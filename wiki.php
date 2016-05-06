@@ -118,13 +118,19 @@ class Wiki
             'parts' => $parts,
             'page' => $page_data,
             'is_dir' => false,
-            'use_pastebin' => $this->_usePasteBin()
+            'use_pastebin' => $this->_usePasteBin(),
+            'use_pinboard' => $this->_usePinBoard()
         ));
     }
 
     protected function _usePasteBin()
     {
         return defined('ENABLE_PASTEBIN') && ENABLE_PASTEBIN && defined('PASTEBIN_API_KEY') && PASTEBIN_API_KEY;
+    }
+
+    protected function _usePinBoard()
+    {
+        return defined('ENABLE_PINBOARD') && ENABLE_PINBOARD && defined('PINBOARD_API_KEY') && PINBOARD_API_KEY;
     }
 
     /**
@@ -443,7 +449,23 @@ class Wiki
 
         exit();
     }
-
+    
+    /**
+     * Pinboard
+     * @return string JSON response
+     * TODO: implement error handling for api access errors. Currently
+     *   it fails silently.
+     */
+    public function getPinboardBookmarksAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once PLUGINS . DIRECTORY_SEPARATOR . 'pinboard-api.php';
+            $pinboard = new PinboardAPI(PINBOARD_USERNAME, PINBOARD_API_KEY);
+            $bookmarks = $pinboard->get_all();            
+            echo json_encode($bookmarks);
+        }
+    }
+    
     /**
      * Singleton
      * @return Wiki

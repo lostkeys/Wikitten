@@ -20,6 +20,8 @@ Cloud:  #f8f8f8
   --btn-text: var(--text-base);
   --btn-success-bg: var(--color-grass);
   --btn-success-text: #fff;
+  
+  --bookmark-tags: var(--color-amethyst);
 }
 
 /* Font Face */
@@ -423,6 +425,29 @@ pre code {
 .directory-path {
     color: #7B848C;
     font-weight: normal;
+}
+
+/* Pinboard */
+.pinboard .bookmarks {
+  margin: 0 0 1em 0;
+  padding: 0;
+  list-style: none;
+}
+.pinboard .bookmark {
+  margin: 0 0 1em 0;
+}
+.pinboard .bookmark-heading {
+  font-size: 1rem;
+  margin:0;
+  font-weight: bold;
+}
+.pinboard .bookmark-description {
+  margin: 0;
+  
+}
+.pinboard .bookmark-tags {
+  color: var(--bookmark-tags);
+  margin:0;
 }
 
 
