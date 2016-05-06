@@ -13,7 +13,7 @@ function tree($array, $parent, $parts = array(), $step = 0) {
             $open = $step !== false && (isset($parts[$step]) && $key == $parts[$step]);
 
             $t .= '<li class="directory'. ($open ? ' open' : '') .'">';
-                $t .= '<a href="#" data-role="directory"><i class="glyphicon glyphicon-folder-'. ($open ? 'open' : 'close') .'"></i>&nbsp; ' . $key . '</a>';
+                $t .= '<a href="#" data-role="directory" class="folder-'. ($open ? 'open' : 'close') .'">' . $key . '</a>';
                 $t .= tree($item, "$parent/$key", $parts, $open ? $step + 1 : false);
             $t .=  '</li>';
         } else {
@@ -47,8 +47,8 @@ function tree($array, $parent, $parts = array(), $step = 0) {
     };
 
     $(document).ready(function() {
-        var iconFolderOpenClass  = 'glyphicon glyphicon-folder-open',
-            iconFolderCloseClass = 'glyphicon glyphicon-folder-close',
+        var iconFolderOpenClass  = 'folder-open',
+            iconFolderCloseClass = 'folder-close',
 
             // Handle live search/filtering:
             tree             = $('#tree'),
@@ -112,25 +112,25 @@ function tree($array, $parent, $parts = array(), $step = 0) {
         });
 
         // Handle directory-tree expansion:
-        $(document).on('click', '#sidebar a[data-role="directory"]', function (event) {
+        $(document).on('click', '#main-nav a[data-role="directory"]', function (event) {
             event.preventDefault();
 
-            var icon = $(this).children('.glyphicon');
-            var open = icon.hasClass(iconFolderOpenClass);
+            var node = $(this);
+            var open = node.hasClass(iconFolderOpenClass);
             var subtree = $(this).siblings('ul')[0];
 
-            icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+            node.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
 
             if (open) {
                 if (typeof subtree != 'undefined') {
                     $(subtree).slideUp({ duration: 100 });
                 }
-                icon.addClass(iconFolderCloseClass);
+                node.addClass(iconFolderCloseClass);
             } else {
                 if (typeof subtree != 'undefined') {
                     $(subtree).slideDown({ duration: 100 });
                 }
-                icon.addClass(iconFolderOpenClass);
+                node.addClass(iconFolderOpenClass);
             }
         });
     });

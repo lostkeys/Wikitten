@@ -312,6 +312,24 @@ table th {
   /*   padding-bottom: 5px; */
 }
 
+/* Tree */
+
+.main-nav nav li.directory > a::before {
+  content: '▸ ';
+}
+.main-nav nav li.directory a.folder-open::before {
+  content: '▾ ';
+}
+.main-nav nav li.directory > ul {
+  margin-top: 0;
+  margin-left: 20px;
+  display: none;
+  margin-bottom: 10px;
+}
+.main-nav nav li.directory.open > ul {
+  display: block;
+}
+
 .main-nav a {
   font-size: 0.9rem;
   display: block;
@@ -380,6 +398,7 @@ pre code {
   position: absolute;
   top: 0;
   padding: 10px 0;
+  display:none; /*FIXME turning off breadcrumbs until properly styled*/
 }
 .breadcrumb {
   margin: 0;
@@ -571,6 +590,7 @@ form {
 #logo:hover .bubble {
     bottom: 40px;
 }
+/*
 #tree-filter-clear-query {
     cursor: pointer;
 }
@@ -592,3 +612,4 @@ form {
     font-weight: bold;
     color: #333;
 }
+*/

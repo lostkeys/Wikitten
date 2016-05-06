@@ -17,7 +17,7 @@
 
         <?php foreach ($parts as $part): ?>
             <?php $path[] = $part; ?>
-            <!-- TODO: I'm not using folders so this is not tested -->
+            <!-- TODO: Not fixed -->
             <?php $url = BASE_URL . "/" . join("/", $path) ?>
             <li>
                 <a href="<?php echo htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
