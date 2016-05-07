@@ -79,7 +79,6 @@ function e($dirty) {
     $(document).ready(function(){
         var render = function(data) {
             var items = [];
-                        
 
             $.each( data, function( key, val ) {                
                 items.push( '<li class="bookmark" id="bookmark-' + key + '">'
