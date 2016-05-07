@@ -79,15 +79,24 @@ function e($dirty) {
     $(document).ready(function(){
         var render = function(data) {
             var items = [];
+                        
 
-            $.each( data, function( key, val ) {
+            $.each( data, function( key, val ) {                
                 items.push( '<li class="bookmark" id="bookmark-' + key + '">'
-                    + '<h3 class="bookmark-heading">' + val.title + '</h3>'
+                    + '<h3 class="bookmark-heading"><a href="' + val.url + '">' + val.title + '</a></h3>'
                     + '<p class="bookmark-description">' + val.description + '</p>'
-                    + '<div class="bookmark-tags">' + val.tags + '</div>'
+                    + '<div class="bookmark-tags">' + renderTags(val.tags) + '</div>'
                     + '</li>'
                 );
             });
+            
+            function renderTags(tagsArr) {
+                var tags = [];
+                $.each( tagsArr, function( key, val ) {
+                    tags.push( '<span class="bookmark-tag">' + val + '</span>');
+                });
+                return tags.join( "" );
+            }
 
             $( "<ul/>", {
                 "class": "bookmarks",

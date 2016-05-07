@@ -443,14 +443,18 @@ pre code {
 }
 .pinboard .bookmark-description {
   margin: 0;
-  
 }
 .pinboard .bookmark-tags {
-  color: var(--bookmark-tags);
   margin:0;
 }
-
-
+.pinboard .bookmark-tag {
+  color: var(--bookmark-tags);
+  margin-right: .5rem;  
+}
+.pinboard .bookmark-description:empty,
+.pinboard .bookmark-tag:empty {
+  display: none;
+}
 
 /* --------------------------------*/
 /* --Legacy code-------------------*/
