@@ -1,11 +1,6 @@
-/* Variables
-Text:   #4d5757
-Smoke:  #ecf0f1
-Cloud:  #f8f8f8
-??? borders on code: e1e7e8
-*/
-
+/* Variables */
 :root {
+  --color-white: #ffffff;
   --color-asphalt:#4d5757;
   --color-concrete: #96A5A5;
   --color-smoke: #e1e7e8;
@@ -13,14 +8,14 @@ Cloud:  #f8f8f8
   --color-amethyst: #9b59b6;
   --color-grass: #27ae60;
 
-  --text-base: var(--color-asphalt);
-  --link-active: var(--color-amethyst);
-
+  --border-color: var(--color-smoke);  
+  --code-bg-color: var(--color-cloud);
+  --text-color: var(--color-asphalt);
+  --link-active-color: var(--color-amethyst);
   --btn-bg: var(--color-smoke);
-  --btn-text: var(--text-base);
+  --btn-text: var(--text-color);
   --btn-success-bg: var(--color-grass);
-  --btn-success-text: #fff;
-  
+  --btn-success-text: var(--color-white);
   --bookmark-tags: var(--color-amethyst);
 }
 
@@ -82,7 +77,7 @@ html {
 body {
   margin: 15vh 15px;
   background-color: #fff;
-  color: #4d5757;
+  color: var(--text-color);
   /* text */
 }
 
@@ -105,7 +100,7 @@ a:hover {
 
 a:active,
 a:focus {
-  color: var(--link-active);
+  color: var(--link-active-color);
 }
 
 h1 {
@@ -232,7 +227,7 @@ table th {
   width: 24px;
   height: 2px;
   transform: rotate(-45deg);
-  background-color: var(--text-base);
+  background-color: var(--text-color);
 }
 
 .toggle-menu.open span:nth-child(3) {
@@ -241,7 +236,7 @@ table th {
   width: 24px;
   height: 2px;
   transform: rotate(45deg);
-  background-color: var(--text-base);
+  background-color: var(--text-color);
 }
 
 .toggle-menu.open span:nth-child(1),
@@ -269,7 +264,6 @@ table th {
   height: 100vh;
   transition: transform .3s, background .3s;
   transform: translate3d(-240px, 0, 0);
-  /*     background-color: #ecf0f1;  */
   -webkit-backdrop-filter: blur(15px);
 }
 
@@ -279,12 +273,10 @@ table th {
 }
 
 .main-nav a {
-  color: #4d5757;
-  /* text */
+  color: var(--text-color);
 }
 
 .main-nav a:hover {
-  /*   color: #fff; */
 }
 
 .main-nav nav {
@@ -378,10 +370,10 @@ code {
   font-size: 15px;
   display: inline-block;
   padding: 0 3px;
-  border: 1px solid #e1e7e8;
+  border: 1px solid var(--border-color);
   border-radius: 3px;
-  background-color: #f8f8f8;
-  color: #4d5757;
+  background-color: var(--code-bg-color);
+  color: var(--text-color);
   /* text */
 }
 pre code {
@@ -416,11 +408,11 @@ pre code {
   transition: color .5s;
 }
 .breadcrumb:hover a {
-  color: var(--text-base);
+  color: var(--text-color);
 }
 .breadcrumb a:focus,
 .breadcrumb a:active {
-  color: var(--link-active);
+  color: var(--link-active-color);
 }
 .directory-path {
     color: #7B848C;
