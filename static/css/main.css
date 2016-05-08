@@ -1,4 +1,13 @@
-/* Variables */
+/**
+ * Main.css
+ *
+ * Note: This stylesheet is using a mobile first approach
+ */
+
+/*
+ * Variables, resets and setup
+ */
+ 
 :root {
   --color-white: #ffffff;
   --color-asphalt:#4d5757;
@@ -16,44 +25,37 @@
   --btn-text: var(--text-color);
   --btn-success-bg: var(--color-grass);
   --btn-success-text: var(--color-white);
-  --bookmark-tags: var(--color-amethyst);
+  --bookmark-tags: var(--color-amethyst);  
 }
 
-/* Font Face */
 @font-face {
   font-weight: 400;
   font-style: normal;
   font-family: 'source-sans-pro';
-  src: url('../fonts/source-sans-pro/SourceSansPro-Regular.eot');
-  /* IE9 Compat Modes */
+  src: url('../fonts/source-sans-pro/SourceSansPro-Regular.eot'); /* IE9 Compat Modes */
   src: url('../fonts/source-sans-pro/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/source-sans-pro/SourceSansPro-Regular.otf.woff') format('woff'), /* Pretty Modern Browsers */
-  url('../fonts/source-sans-pro/SourceSansPro-Regular.ttf') format('truetype');
-  /* Safari, Android, iOS */
+  url('../fonts/source-sans-pro/SourceSansPro-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
   font-weight: 400;
   font-style: italic;
   font-family: 'source-sans-pro';
-  src: url('../fonts/source-sans-pro/SourceSansPro-It.eot');
-  /* IE9 Compat Modes */
+  src: url('../fonts/source-sans-pro/SourceSansPro-It.eot'); /* IE9 Compat Modes */
   src: url('../fonts/source-sans-pro/SourceSansPro-It.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/source-sans-pro/SourceSansPro-It.otf.woff') format('woff'), /* Pretty Modern Browsers */
-  url('../fonts/source-sans-pro/SourceSansPro-It.ttf') format('truetype');
-  /* Safari, Android, iOS */
+  url('../fonts/source-sans-pro/SourceSansPro-It.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
   font-weight: 700;
   font-style: normal;
   font-family: 'source-sans-pro';
-  src: url('../fonts/source-sans-pro/SourceSansPro-Semibold.eot');
-  /* IE9 Compat Modes */
+  src: url('../fonts/source-sans-pro/SourceSansPro-Semibold.eot'); /* IE9 Compat Modes */
   src: url('../fonts/source-sans-pro/SourceSansPro-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/source-sans-pro/SourceSansPro-Semibold.otf.woff') format('woff'), /* Pretty Modern Browsers */
-  url('../fonts/source-sans-pro/SourceSansPro-Semibold.ttf') format('truetype');
-  /* Safari, Android, iOS */
+  url('../fonts/source-sans-pro/SourceSansPro-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -64,10 +66,20 @@
   /* IE9 Compat Modes */
   src: url('../fonts/source-sans-pro/SourceSansPro-SemiboldIt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/source-sans-pro/SourceSansPro-SemiboldIt.otf.woff') format('woff'), /* Pretty Modern Browsers */
-  url('../fonts/source-sans-pro/SourceSansPro-SemiboldIt.ttf') format('truetype');
-  /* Safari, Android, iOS */
+  url('../fonts/source-sans-pro/SourceSansPro-SemiboldIt.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
+:focus {
+    outline: none !important;
+}
+::-moz-focus-inner {
+    border:0 !important;
+} 
+
+/*
+ * Basic styling
+ */
+ 
 html {
   font-size: 18px;
   font-family: "source-sans-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -78,14 +90,6 @@ body {
   margin: 15vh 15px;
   background-color: #fff;
   color: var(--text-color);
-  /* text */
-}
-
-hr {
-  margin: 1rem 0;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: #ecf0f1;
 }
 
 a,
@@ -101,6 +105,13 @@ a:hover {
 a:active,
 a:focus {
   color: var(--link-active-color);
+}
+
+hr {
+  margin: 1rem 0;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #ecf0f1;
 }
 
 h1 {
@@ -133,6 +144,7 @@ h4 {
 table {
   border-collapse: collapse;
 }
+
 table td,
 table th {
   text-align: left;
@@ -140,8 +152,39 @@ table th {
   border: 1px solid #ecf0f1;
 }
 
+code {
+  font-size: 15px;
+  display: inline-block;
+  padding: 0 3px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--code-bg-color);
+  color: var(--text-color);
+}
 
-/* FIXME */
+pre code {
+  display: block;
+  padding: 5px 10px;
+}
+
+.actions {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.main-content {
+  margin-right: auto;
+  margin-left: auto;
+  /* margin-left: 200px; */
+  max-width: 800px;
+}
+
+/*
+ * Buttons 
+ */
+ 
 .btn {
   display:inline-block;
   margin: 0;
@@ -156,18 +199,139 @@ table th {
   -webkit-user-select: none;
   transition: transform .1s;
 }
+
 .btn:hover {
-  color: var(--btn-text);
+  color: var(--btn-text);  
   transform: scale(1.05);
 }
+
 .btn-success {
-  background: var(--btn-success-bg);
-  color: var(--btn-success-text);
+  --btn-bg: var(--btn-success-bg);
+  --btn-text: var(--btn-success-text);
 }
-.btn-success:hover {
-  /* TODO: there is a inheritance selector, find it. */
-  color: var(--btn-success-text);
+
+/* 
+ * Main navigation
+ */
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 240px;
+  height: 100vh;
+  transition: transform .3s, background .3s;
+  transform: translate3d(-240px, 0, 0);
+  -webkit-backdrop-filter: blur(15px);
 }
+
+.main-nav.open {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  transform: translate3d(0px, 0, 0);
+}
+
+.main-nav a {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  display: block;
+  overflow: hidden;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+}
+
+.main-nav a:hover {
+}
+
+.main-nav nav {
+  padding: 80px 0 0;
+}
+
+.main-nav nav ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.main-nav nav li {
+  margin-left: 0px;
+}
+
+.main-nav nav > ul > li {
+  padding-left: 22px;
+}
+
+.main-nav nav li.active {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.main-nav nav li.active > a {
+  font-weight: bold;
+}
+
+/* Main nav Tree */
+
+.main-nav nav li.directory > a::before {
+  content: '▸ ';
+}
+
+.main-nav nav li.directory a.folder-open::before {
+  content: '▾ ';
+}
+
+.main-nav nav li.directory > ul {
+  margin-top: 0;
+  margin-left: 20px;
+  display: none;
+  margin-bottom: 10px;
+}
+
+.main-nav nav li.directory.open > ul {
+  display: block;
+}
+
+/* same-page navigation */
+
+.page-nav:not(:empty) {
+  padding-top: 5px;
+}
+
+.page-nav a {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 0.8em;
+}
+
+.page-nav a:before {
+  content: '# ';
+}
+
+@media (min-width: 1390px) {
+  .main-nav {
+    box-shadow: none;
+    transform: translate3d(0px, 0, 0);
+  }
+  .main-nav li a {
+    opacity: .25;
+    transition: opacity .15s;
+  }
+  .main-nav:hover li a {
+    opacity: 1;
+  }
+  .main-nav li.active a {
+    /*opacity: 1;*/
+  }
+  .main-nav nav li.active {
+    background-color: transparent;
+  }
+}
+
+/*
+ * Menu 
+ */
 
 .toggle-menu {
   position: fixed;
@@ -247,146 +411,9 @@ table th {
   width: 2px;
 }
 
-.main-content {
-  margin-right: auto;
-  margin-left: auto;
-  /* margin-left: 200px; */
-  max-width: 800px;
-}
-
-.main-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  width: 240px;
-  height: 100vh;
-  transition: transform .3s, background .3s;
-  transform: translate3d(-240px, 0, 0);
-  -webkit-backdrop-filter: blur(15px);
-}
-
-.main-nav.open {
-  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  transform: translate3d(0px, 0, 0);
-}
-
-.main-nav a {
-  color: var(--text-color);
-}
-
-.main-nav a:hover {
-}
-
-.main-nav nav {
-  padding: 80px 0 0;
-}
-
-.main-nav nav ul {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-}
-
-.main-nav nav li {
-  margin-left: 0px;
-}
-
-.main-nav nav > ul > li {
-  padding-left: 22px;
-}
-
-.main-nav nav li.active {
-  background-color: rgba(0, 0, 0, .05);
-}
-
-.main-nav nav li.active > a {
-  font-weight: bold;
-  /*   padding-bottom: 5px; */
-}
-
-/* Tree */
-
-.main-nav nav li.directory > a::before {
-  content: '▸ ';
-}
-.main-nav nav li.directory a.folder-open::before {
-  content: '▾ ';
-}
-.main-nav nav li.directory > ul {
-  margin-top: 0;
-  margin-left: 20px;
-  display: none;
-  margin-bottom: 10px;
-}
-.main-nav nav li.directory.open > ul {
-  display: block;
-}
-
-.main-nav a {
-  font-size: 0.9rem;
-  display: block;
-  overflow: hidden;
-  padding-top: 5px;
-  padding-bottom: 0px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.page-nav:not(:empty) {
-  padding-top: 5px;
-}
-.page-nav a {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  font-size: 0.8em;
-}
-.page-nav a:before {
-  content: '# ';
-}
-
-@media (min-width: 1390px) {
-  .main-nav {
-    box-shadow: none;
-    transform: translate3d(0px, 0, 0);
-  }
-  .main-nav li a {
-    opacity: .25;
-    transition: opacity .15s;
-  }
-  .main-nav:hover li a {
-    opacity: 1;
-  }
-  .main-nav li.active a {
-    /*opacity: 1;*/
-  }
-  .main-nav nav li.active {
-    background-color: transparent;
-  }
-}
-
-code {
-  font-size: 15px;
-  display: inline-block;
-  padding: 0 3px;
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-  background-color: var(--code-bg-color);
-  color: var(--text-color);
-  /* text */
-}
-pre code {
-  display: block;
-  padding: 5px 10px;
-}
-
-.actions {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 10px;
-}
+/* 
+ * Breadcrumbs
+ */
 
 .breadcrumbs {
   position: absolute;
@@ -419,7 +446,10 @@ pre code {
     font-weight: normal;
 }
 
-/* Pinboard */
+/* 
+ * Pinboard 
+ */
+ 
 .pinboard .bookmarks {
   margin: 0 0 1em 0;
   padding: 0;
@@ -448,20 +478,14 @@ pre code {
   display: none;
 }
 
-/* --------------------------------*/
-/* --Legacy code-------------------*/
-/* --------------------------------*/
+/* ==========================================================================
+   Legacy CSS
+   ========================================================================== */
 .clear {
     clear: both;
     font-size: 0;
     line-height: 0;
     display: block;
-}
-:focus {
-    outline: none !important;
-}
-::-moz-focus-inner {
-    border:0 !important;
 }
 
 .CodeMirror {
