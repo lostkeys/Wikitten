@@ -68,9 +68,11 @@ function e($dirty) {
     </nav>
   </aside>
 
-  <div class="main-content" id="main-content">
+  <main class="main-content" id="main-content">
+    <article class="article">
     <?php echo $content; ?>
-  </div>
+    </article>
+  </main>
 
   <script>hljs.initHighlightingOnLoad();</script>
 
