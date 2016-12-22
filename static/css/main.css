@@ -366,7 +366,7 @@ pre code {
   background-color: var(--color-smoke);
   opacity: 1;
   transition: .20s ease-in-out;
-  transform-origin: center;;
+  transform-origin: center;
 }
 
 .toggle-menu span:nth-child(1) {
